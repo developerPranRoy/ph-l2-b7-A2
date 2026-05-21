@@ -11,6 +11,7 @@ import cookePerser from "cookie-parser"
 import cors from "cors"
 import globalErrorHandler from "./middlewares/globalerrorhandler";
 import { resposnseHandler } from "./utility/responsehandler";
+import { issuesRouter } from "./modules/issues/issues.route";
 const app: Application = express();
 
 app.use(cookePerser());
@@ -25,6 +26,8 @@ app.use(cors({
 app.get("/", async (req: Request, res: Response) => {
     return resposnseHandler(res, 200, "Server Chalu ache",)
 })
+
+app.use("/api/issues", issuesRouter);
 
 export default app;
 
