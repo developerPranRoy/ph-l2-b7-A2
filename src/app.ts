@@ -4,14 +4,13 @@ import express, {
     type Response,
 
 } from "express";
-// import { userRoute } from "./modules/user/user.routes";
-// import { profileRoute } from "./modules/profile/profile.route";
-// import { authRouter } from "./modules/auth/auth.route";
 import cookePerser from "cookie-parser"
 import cors from "cors"
 import globalErrorHandler from "./middlewares/globalerrorhandler";
 import { resposnseHandler } from "./utility/responsehandler";
 import { issuesRouter } from "./modules/issues/issues.route";
+import { profileRouter } from "./modules/profiles/profile.router";
+import { loginRouter } from "./middlewares/auth/auth.router";
 const app: Application = express();
 
 app.use(cookePerser());
@@ -28,6 +27,10 @@ app.get("/", async (req: Request, res: Response) => {
 })
 
 app.use("/api/issues", issuesRouter);
+app.use("/api/auth", profileRouter);
+app.use("/api/auth", loginRouter);
+app.use(globalErrorHandler);
+
 
 export default app;
 

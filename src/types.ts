@@ -11,3 +11,22 @@ export interface TUpdateIssue {
     type?: "bug" | "feature_request";
     status?: "open" | "in_progress" | "resolved";
 }
+
+
+export interface IUser {
+    name: string;
+    email: string;
+    password: string;
+    role?: UserRole;
+}
+
+
+export enum UserRole {
+    MAINTAINER = "maintainer",
+    CONTRIBUTOR = "contributor ",
+}
+
+export interface IAuth {
+  email: string;
+  password: string;
+}
