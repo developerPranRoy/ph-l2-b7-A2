@@ -8,7 +8,8 @@
     "express": "^5.2.1",
     "init": "^0.1.2",
     "jsonwebtoken": "^9.0.3",
-    "pg": "^8.21.0"
+    "pg": "^8.21.0",
+    "tsup": "^8.5.1"
   },
   "name": "b7a2",
   "version": "1.0.0",
@@ -27,7 +28,7 @@
   },
   "scripts": {
     "start": "node dist/server.js",
-    "build": "tsc",
+    "build": "tsup",
     "dev": "tsx watch ./src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
