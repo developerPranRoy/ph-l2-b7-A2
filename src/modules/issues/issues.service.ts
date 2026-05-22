@@ -1,13 +1,55 @@
 import type { JwtPayload } from "jsonwebtoken";
 import { pool } from "../../db"
-import type { TCreateIssue, TUpdateIssue } from "../../types";
+import type { TCreateIssue, TUpdateIssue } from "../../types/types";
 
-const getAllUssuesDB = async () => {
-    const result = await pool.query(`
-        SELECT * FROM issues
-        `)
-    return result.rows
-}
+
+const getAllUssuesDB = async (query: any) => {
+    const { sort = "newest", type, status } = query;
+
+    let baseQuery = `SELECT * FROM issues`;
+    const conditions: string[] = [];
+    const values: any[] = [];
+
+    if (type) {
+        values.push(type);
+        conditions.push(`type = $${values.length}`);
+    }
+
+    if (status) {
+        values.push(status);
+        conditions.push(`status = $${values.length}`);
+    }
+
+    if (conditions.length > 0) {
+        baseQuery += ` WHERE ` + conditions.join(" AND ");
+    }
+
+    baseQuery += sort === "oldest"
+        ? ` ORDER BY created_at ASC`
+        : ` ORDER BY created_at DESC`;
+
+    const result = await pool.query(baseQuery, values);
+    const issues = result.rows;
+
+    if (issues.length === 0) return [];
+    const reporterIds = [...new Set(issues.map(i => i.reporter_id))];
+
+    const reportersResult = await pool.query(
+        `SELECT id, name, role FROM users WHERE id = ANY($1)`,
+        [reporterIds]
+    );
+
+    const reportersMap = new Map(
+        reportersResult.rows.map(r => [r.id, r])
+    );
+
+    const finalData = issues.map(issue => ({
+        ...issue,
+        reporter: reportersMap.get(issue.reporter_id) || null
+    }));
+
+    return finalData;
+};
 
 const getIssuseDb = async (id: number) => {
     const result = await pool.query(

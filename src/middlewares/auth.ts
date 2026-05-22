@@ -1,5 +1,5 @@
 import type { NextFunction, Request, Response } from "express";
-import type { UserRole } from "../types";
+import type { UserRole } from "../types/types";
 import { resposnseHandler } from "../utility/responsehandler";
 import { error } from "node:console";
 import jwt, { type JwtPayload } from "jsonwebtoken"

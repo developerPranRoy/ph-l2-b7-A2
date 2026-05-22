@@ -1,6 +1,6 @@
 import config from "../../config/config";
 import { pool } from "../../db";
-import type { IAuth, IUser } from "../../types";
+import type { IAuth, IUser } from "../../types/types";
 import bcrypt from "bcrypt";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 

@@ -1,16 +1,15 @@
 import type { Request, Response } from "express";
 import { resposnseHandler } from "../../utility/responsehandler";
 import { issuesService } from "./issues.service";
-import { registerHooks } from "module";
 import type { JwtPayload } from "jsonwebtoken";
 
 
 const getAllUssues = async (req: Request, res: Response) => {
     try {
-        const result = await issuesService.getAllUssuesDB();
+        const result = await issuesService.getAllUssuesDB(req.query);
         return resposnseHandler(res, 200, "Issues  retrieved successfully", { result })
     } catch (error: any) {
-        return resposnseHandler(res, 500, "User not found", error.message)
+        return resposnseHandler(res, 500, "Internal server error", error.message)
     }
 }
 

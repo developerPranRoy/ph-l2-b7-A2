@@ -1,5 +1,5 @@
 import { pool } from "../../db";
-import type { IUser } from "../../types";
+import type { IUser } from "../../types/types";
 
 import bcrypt from "bcrypt"
 

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { issuesController } from "./issues.controller";
 import auth from "../../middlewares/auth";
-import { UserRole } from "../../types";
+import { UserRole } from "../../types/types";
 
 const router = Router();
 router.get("/", issuesController.getAllUssues)
