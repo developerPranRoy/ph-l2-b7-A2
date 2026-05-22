@@ -2,6 +2,7 @@ import type { Request, Response } from "express";
 import { resposnseHandler } from "../../utility/responsehandler";
 import { issuesService } from "./issues.service";
 import { registerHooks } from "module";
+import type { JwtPayload } from "jsonwebtoken";
 
 
 const getAllUssues = async (req: Request, res: Response) => {
@@ -40,7 +41,7 @@ const createIssues = async (req: Request, res: Response) => {
 const updateIssues = async (req: Request, res: Response) => {
     const id = Number(req.params.id);
     try {
-        const result = await issuesService.updateIssueDB(id, req.body)
+        const result = await issuesService.updateIssueDB(id, req.body, req.user as JwtPayload)
 
         if (result.rows.length > 0) {
             return resposnseHandler(res, 200, "Issuses updated successfully!", result.rows[0],);

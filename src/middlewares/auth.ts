@@ -22,6 +22,7 @@ const auth = (...roles: UserRole[]) => {
                 `, [decoded.email])
 
             const user = userData.rows[0];
+            // console.log(user);
             if (userData.rows.length == 0) {
                 return resposnseHandler(res, 404, "User not found!", error)
             }
@@ -29,16 +30,12 @@ const auth = (...roles: UserRole[]) => {
                 return resposnseHandler(res, 403, "Access denied!",);
             }
 
-            req.user = decoded
-
+            req.user = user
             next()
         } catch (error) {
             next(error)
         }
-
-
     }
-
 }
 
 export default auth

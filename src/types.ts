@@ -2,7 +2,14 @@ export interface TCreateIssue {
     title: string;
     description: string;
     type: "bug" | "feature_request";
+    status: IssueStatus;
     reporter_id: number;
+}
+
+export enum IssueStatus {
+    OPEN = "open",
+    IN_PROGRESS = "in_progress",
+    RESOLVED = "resolved",
 }
 
 export interface TUpdateIssue {
@@ -23,10 +30,10 @@ export interface IUser {
 
 export enum UserRole {
     MAINTAINER = "maintainer",
-    CONTRIBUTOR = "contributor ",
+    CONTRIBUTOR = "contributor",
 }
 
 export interface IAuth {
-  email: string;
-  password: string;
+    email: string;
+    password: string;
 }
