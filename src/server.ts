@@ -1,6 +1,6 @@
 import app from "./app";
 import { initDB } from "./db";
 
-initDB();
+await initDB();
 
 export default app;
