@@ -1,4 +1,5 @@
 # ph-l2-b7-A2
+
 # Assignment 2 - Issue Tracker API
 
 A backend REST API built with Node.js, Express, TypeScript, and PostgreSQL.  
@@ -6,14 +7,16 @@ This project is deployed on Vercel.
 
 ---
 
-##  Live API
+## Live API
 
 Base URL:
-https://assignment-2-developerpranroys-projects.vercel.app
+
+https://assignment-2-qdwq1xamc-developerpranroys-projects.vercel.app
+https://assignment-2-developerpranroy-developerpranroys-projects.vercel.app/
 
 ---
 
-##  Tech Stack
+## Tech Stack
 
 - Node.js (LTS)
 - TypeScript
@@ -25,15 +28,17 @@ https://assignment-2-developerpranroys-projects.vercel.app
 
 ---
 
-##  User Roles
+## User Roles
 
 ### contributor
+
 - Register & login
 - Create issues
 - View all issues
 - Update own issue (if open)
 
 ### maintainer
+
 - All contributor permissions
 - Update any issue
 - Delete issue
@@ -41,48 +46,45 @@ https://assignment-2-developerpranroys-projects.vercel.app
 
 ---
 
-##  Authentication
+## Authentication
 
 JWT-based authentication system.
 
 ### Flow:
+
 1. User login/register
 2. Server returns JWT token
 3. Client sends token in header:
 
 ---
 
-##  API Endpoints
+## API Endpoints
 
-###  Auth
+### Auth
 
 #### Register
-POST /api/auth/signup
 
+POST /api/auth/signup
 
 #### Login
 
 POST /api/auth/login
 
-
 ---
 
-###  Issues
+### Issues
 
 #### Create Issue
 
 POST /api/issues
 
-
 #### Get All Issues
 
 GET /api/issues?sort=newest
 
-
 #### Get Single Issue
 
 GET /api/issues/:id
-
 
 #### Update Issue
 
@@ -92,10 +94,9 @@ PATCH /api/issues/:id
 
 DELETE /api/issues/:id
 
-
 ---
 
-##  Deployment
+## Deployment
 
 Project deployed on Vercel:
 
@@ -103,14 +104,14 @@ https://assignment-2-developerpranroys-projects.vercel.app
 
 ---
 
-##  Testing Tools
+## Testing Tools
 
 - Postman
 - Browser (for GET routes)
 
 ---
 
-##  Project Rules Followed
+## Project Rules Followed
 
 - Modular architecture used
 - Raw SQL only (no ORM / query builder)
@@ -121,6 +122,6 @@ https://assignment-2-developerpranroys-projects.vercel.app
 
 ---
 
-##  Author
+## Author
 
 Pran Kumar Roy
