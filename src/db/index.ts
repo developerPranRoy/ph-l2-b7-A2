@@ -3,7 +3,6 @@ import config from "../config/config";
 
 export const pool = new Pool({
     connectionString: config.connectionString,
-    port: Number(config.port),
     ssl: {
         rejectUnauthorized: false,
     },
