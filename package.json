@@ -29,7 +29,7 @@
     "typescript": "^6.0.3"
   },
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node dist/server.cjs",
     "dev": "tsx watch ./src/server.ts",
     "build": "tsup"
   },
