@@ -5,9 +5,16 @@ import { initDB } from "./db";
 const main = async () => {
     await initDB();
 
-    app.listen(config.port, () => {
-        console.log(`Server is running on port ${config.port}`);
-    });
+    const isVercel = process.env.VERCEL === "1" || process.env.NODE_ENV === "production";
+
+    if (!isVercel) {
+        const port = config.port || 5000;
+        app.listen(port, () => {
+            console.log(`Server is running on port ${port}`);
+        });
+    }
 };
 
 main();
+
+export default app;
