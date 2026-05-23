@@ -1,12 +1,6 @@
-import app from "./app"
-import config from "./config/config";
+import app from "./app";
 import { initDB } from "./db";
 
-const main =()=>{
-    initDB();
-    app.listen(config.port, () => {
-    console.log(` App listening on port ${config.port}`)
-})
-}
+initDB();
 
-main()
+export default app;
