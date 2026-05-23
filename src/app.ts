@@ -4,7 +4,7 @@ import express, {
     type Response,
 
 } from "express";
-import cookePerser from "cookie-parser"
+import cookieParser from "cookie-parser";;
 import cors from "cors"
 import globalErrorHandler from "./middlewares/globalerrorhandler";
 import { resposnseHandler } from "./utility/responsehandler";
@@ -13,12 +13,13 @@ import { profileRouter } from "./modules/profiles/profile.router";
 import { loginRouter } from "./middlewares/auth/auth.router";
 const app: Application = express();
 
-app.use(cookePerser());
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: 'http://localhost:8000',
+    origin: "*",
+    credentials: true
 }));
 
 
