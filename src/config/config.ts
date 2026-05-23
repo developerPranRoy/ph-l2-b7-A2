@@ -1,14 +1,20 @@
 import dotenv from "dotenv";
 import path from "path";
 
-dotenv.config({ path: path.join(process.cwd(), ".env") });
+dotenv.config({
+  path: path.join(process.cwd(), ".env"),
+});
 
 const config = {
   connectionString: process.env.CONNECTIONSTRING as string,
-  port: process.env.PORT,
-  secret: process.env.JWT_SECRET,
-  refresh_secret: process.env.REFRESH_SECRET,
-  token_expire_time: process.env.TOKEN_EXPIRE,
 
+  port: process.env.PORT || 5000,
+
+  secret: process.env.JWT_SECRET as string,
+
+  refresh_secret: process.env.REFRESH_SECRET as string,
+
+  token_expire_time: process.env.TOKEN_EXPIRE as string,
 };
+
 export default config;

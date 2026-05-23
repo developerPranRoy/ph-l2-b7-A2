@@ -1,6 +1,13 @@
 import app from "./app";
+import config from "./config/config";
 import { initDB } from "./db";
 
-await initDB();
+const main = async () => {
+    await initDB();
 
-export default app;
+    app.listen(config.port, () => {
+        console.log(`Server is running on port ${config.port}`);
+    });
+};
+
+main();

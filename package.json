@@ -1,4 +1,7 @@
 {
+  "name": "b7a2",
+  "version": "1.0.0",
+
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cookie": "^1.1.1",
@@ -6,16 +9,10 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "init": "^0.1.2",
     "jsonwebtoken": "^9.0.3",
-    "pg": "^8.21.0",
-    "serverless-http": "^4.0.0",
-    "tsup": "^8.5.1"
+    "pg": "^8.21.0"
   },
-  "name": "b7a2",
-  "version": "1.0.0",
-  "type": "module",
-  "description": "",
+
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
     "@types/cookie-parser": "^1.4.10",
@@ -25,17 +22,12 @@
     "@types/node": "^25.9.1",
     "@types/pg": "^8.20.0",
     "ts-node-dev": "^2.0.0",
-    "tsx": "^4.22.3",
     "typescript": "^6.0.3"
   },
+
   "scripts": {
-    "start": "node dist/server.js",
-    "build": "tsup",
-    "dev": "tsx watch ./src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "types": "module"
+    "dev": "ts-node-dev --respawn src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  }
 }
